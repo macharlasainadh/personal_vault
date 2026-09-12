@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="112" fill="#0B0F17"/>
+  <rect x="16" y="16" width="480" height="480" rx="96" stroke="#1F293D" stroke-width="12" fill="none"/>
+  <!-- Outer Shield Outline -->
+  <path d="M256 96 C336 96 384 128 384 128 V272 C384 352 312 408 256 424 C200 408 128 352 128 272 V128 C128 128 176 96 256 96 Z" 
+        fill="#141A26" stroke="#3B82F6" stroke-width="20" stroke-linejoin="round"/>
+  <!-- Inner Lock Shackle -->
+  <path d="M216 232 V196 C216 174 234 156 256 156 C278 156 296 174 296 196 V232" 
+        stroke="#60A5FA" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <!-- Inner Lock Body -->
+  <rect x="200" y="228" width="112" height="88" rx="18" fill="#3B82F6"/>
+  <!-- Keyhole -->
+  <circle cx="256" cy="264" r="10" fill="#0B0F17"/>
+  <path d="M252 268 L250 286 H262 L260 268 Z" fill="#0B0F17"/>
+</svg>
