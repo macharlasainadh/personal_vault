@@ -843,10 +843,12 @@ export function Dashboard({
                       className="item-row"
                       onClick={() => setDetailsRecordId(item.id)}
                     >
-                      <ServiceIcon title={item.title} type={item.type} />
                       <div className="item-main-info">
-                        <div className="item-title truncate">{item.title}</div>
-                        <div className="item-subtitle truncate">{item.username || item.notes || item.type}</div>
+                        <ServiceIcon title={item.title} type={item.type} />
+                        <div style={{ minWidth: 0, flex: 1 }}>
+                          <div className="item-title truncate">{item.title}</div>
+                          <div className="item-subtitle truncate">{item.username || item.notes || item.type}</div>
+                        </div>
                       </div>
 
                       <div className="item-meta-info">
@@ -955,7 +957,7 @@ export function Dashboard({
                       {/* Title & Service Icon */}
                       <div className="item-main-info" style={{ minWidth: 0 }}>
                         <ServiceIcon title={item.title} type={item.type} />
-                        <div>
+                        <div style={{ minWidth: 0, flex: 1 }}>
                           <div className="item-title truncate">{item.title}</div>
                           <div className="item-subtitle mobile-only truncate">
                             {item.username || item.type}
@@ -1059,12 +1061,14 @@ export function Dashboard({
                       className="item-row"
                       onClick={() => setDetailsRecordId(item.id)}
                     >
-                      <ServiceIcon title={item.title} type={item.type} />
                       <div className="item-main-info">
-                        <div className="item-title truncate">{item.title}</div>
-                        <div className="item-subtitle truncate">{item.username || item.type}</div>
+                        <ServiceIcon title={item.title} type={item.type} />
+                        <div style={{ minWidth: 0, flex: 1 }}>
+                          <div className="item-title truncate">{item.title}</div>
+                          <div className="item-subtitle truncate">{item.username || item.type}</div>
+                        </div>
                       </div>
-                      <ChevronRight size={16} color="var(--text-muted)" />
+                      <ChevronRight size={16} color="var(--text-muted)" style={{ flexShrink: 0 }} />
                     </div>
                   ))}
                 </div>
@@ -1106,7 +1110,7 @@ export function Dashboard({
                   </div>
                 </div>
 
-                <div className="settings-row">
+                <div className="settings-row settings-row-badge">
                   <div className="settings-row-left">
                     <div className="settings-icon-box">
                       <ShieldCheck size={16} color="var(--color-success)" />
@@ -1116,7 +1120,7 @@ export function Dashboard({
                       <div className="settings-row-subtitle">Scoped strictly to private appDataFolder</div>
                     </div>
                   </div>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-success)', background: 'var(--color-success-subtle)', padding: '0.2rem 0.55rem', borderRadius: '9999px' }}>
+                  <span className="settings-badge-status status-connected">
                     Connected
                   </span>
                 </div>
@@ -1127,7 +1131,7 @@ export function Dashboard({
                 <div className="settings-group-header">Preferences</div>
 
                 {/* Theme Selector */}
-                <div className="settings-row">
+                <div className="settings-row settings-row-theme">
                   <div className="settings-row-left">
                     <div className="settings-icon-box">
                       {theme === 'dark' ? <Moon size={16} /> : theme === 'light' ? <Sun size={16} /> : <Laptop size={16} />}
@@ -1164,7 +1168,7 @@ export function Dashboard({
                 </div>
 
                 {/* Sort Order */}
-                <div className="settings-row">
+                <div className="settings-row settings-row-select">
                   <div className="settings-row-left">
                     <div className="settings-icon-box">
                       <Layers size={16} />
@@ -1178,15 +1182,7 @@ export function Dashboard({
                   <select
                     value={sortMode}
                     onChange={(e) => setSortMode(e.target.value as any)}
-                    style={{
-                      backgroundColor: 'var(--bg-input)',
-                      borderColor: 'var(--border-subtle)',
-                      color: 'var(--text-primary)',
-                      fontSize: '0.82rem',
-                      padding: '0.4rem 0.65rem',
-                      borderRadius: '8px',
-                      cursor: 'pointer',
-                    }}
+                    className="settings-select-control"
                   >
                     <option value="updated">Recently Updated</option>
                     <option value="alphabetical">Alphabetical</option>
@@ -1195,7 +1191,7 @@ export function Dashboard({
                 </div>
 
                 {/* Auto-Lock */}
-                <div className="settings-row">
+                <div className="settings-row settings-row-badge">
                   <div className="settings-row-left">
                     <div className="settings-icon-box">
                       <Lock size={16} />
@@ -1205,7 +1201,7 @@ export function Dashboard({
                       <div className="settings-row-subtitle">Locks after 5 minutes of inactivity</div>
                     </div>
                   </div>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>5 min</span>
+                  <span className="settings-badge-status">5 min</span>
                 </div>
               </div>
 
@@ -1226,7 +1222,7 @@ export function Dashboard({
                   <ChevronRight size={16} color="var(--text-muted)" />
                 </div>
 
-                <div className="settings-row">
+                <div className="settings-row settings-row-badge">
                   <div className="settings-row-left">
                     <div className="settings-icon-box">
                       <ShieldCheck size={16} color="var(--color-success)" />
@@ -1236,7 +1232,7 @@ export function Dashboard({
                       <div className="settings-row-subtitle">PBKDF2 (600k iter) + AES-256-GCM encryption</div>
                     </div>
                   </div>
-                  <span style={{ fontSize: '0.74rem', color: 'var(--color-success)', fontWeight: 600 }}>Active</span>
+                  <span className="settings-badge-status status-active">Active</span>
                 </div>
               </div>
 
@@ -1244,7 +1240,7 @@ export function Dashboard({
               <div className="settings-group">
                 <div className="settings-group-header">About</div>
 
-                <div className="settings-row">
+                <div className="settings-row settings-row-badge">
                   <div className="settings-row-left">
                     <div className="settings-icon-box">
                       <Shield size={16} />
@@ -1254,7 +1250,7 @@ export function Dashboard({
                       <div className="settings-row-subtitle">Vault — Progressive Web App</div>
                     </div>
                   </div>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>v1.0.0</span>
+                  <span className="settings-badge-status">v1.0.0</span>
                 </div>
 
                 <div className="settings-row clickable" onClick={onSignOut || onLock}>
